@@ -1,5 +1,5 @@
 import { Outlet, useLocation } from 'react-router-dom'
-import { useEffect } from 'react'
+import { Suspense, useEffect } from 'react'
 import Header from './components/Header'
 import Footer from './components/Footer'
 import styles from './App.module.css'
@@ -16,7 +16,9 @@ function App() {
     <div className={styles.shell}>
       <Header />
       <main className={styles.main}>
-        <Outlet />
+        <Suspense fallback={<div className={styles.loading} aria-hidden="true" />}>
+          <Outlet />
+        </Suspense>
       </main>
       <Footer />
     </div>

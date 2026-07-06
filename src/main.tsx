@@ -1,12 +1,14 @@
-import { StrictMode } from 'react'
+import { StrictMode, lazy } from 'react'
 import { createRoot } from 'react-dom/client'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import './index.css'
 import App from './App.tsx'
 import Home from './pages/Home.tsx'
-import About from './pages/About.tsx'
-import Publications from './pages/Publications.tsx'
-import Events from './pages/Events.tsx'
+
+// Pages secondaires chargées à la demande (chunks séparés)
+const Publications = lazy(() => import('./pages/Publications.tsx'))
+const Events = lazy(() => import('./pages/Events.tsx'))
+const About = lazy(() => import('./pages/About.tsx'))
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>

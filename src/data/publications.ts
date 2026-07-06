@@ -1,4 +1,4 @@
-import tribal119 from '../assets/publications/tribal-119.jpg'
+import tribal119 from '../assets/publications/tribal-119.webp'
 
 export interface Publication {
   id: string

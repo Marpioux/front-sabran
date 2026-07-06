@@ -140,6 +140,7 @@ export default function ArtworkSlider({ artworks, autoplay = 6000 }: Props) {
                     alt={art.alt}
                     className={styles.image}
                     draggable={false}
+                    decoding="async"
                   />
                 </button>
               </div>

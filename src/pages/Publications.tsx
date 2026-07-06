@@ -21,7 +21,14 @@ export default function Publications() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <img src={p.cover} alt={`Couverture — ${p.title} ${p.issue}`} />
+              <img
+                src={p.cover}
+                alt={`Couverture — ${p.title} ${p.issue}`}
+                width={403}
+                height={520}
+                loading="lazy"
+                decoding="async"
+              />
             </a>
             <div className={styles.body}>
               <span className={styles.kicker}>

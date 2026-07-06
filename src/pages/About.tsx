@@ -1,4 +1,4 @@
-import portrait from '../assets/artworks/portrait.png'
+import portrait from '../assets/artworks/portrait.webp'
 import styles from './About.module.css'
 
 export default function About() {
@@ -35,6 +35,10 @@ export default function About() {
           src={portrait}
           alt="Marguerite de Sabran dans son bureau"
           className={styles.portrait}
+          width={452}
+          height={306}
+          loading="lazy"
+          decoding="async"
         />
       </figure>
     </article>

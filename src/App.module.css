@@ -13,3 +13,9 @@
   display: flex;
   flex-direction: column;
 }
+
+/* Réserve l'espace pendant le chargement d'une page (évite le saut de layout) */
+.loading {
+  flex: 1 0 auto;
+  min-height: 50vh;
+}

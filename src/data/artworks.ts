@@ -1,7 +1,7 @@
-import masqueFang from '../assets/artworks/masque-fang.png'
-import masqueYaoure from '../assets/artworks/masque-yaoure.png'
-import rapa from '../assets/artworks/rapa.png'
-import cimierSerpent from '../assets/artworks/cimier-serpent.png'
+import masqueFang from '../assets/artworks/masque-fang.webp'
+import masqueYaoure from '../assets/artworks/masque-yaoure.webp'
+import rapa from '../assets/artworks/rapa.webp'
+import cimierSerpent from '../assets/artworks/cimier-serpent.webp'
 
 export interface Artwork {
   id: string
