@@ -1,12 +1,13 @@
 :root {
   /* Palette claire — blanc cassé chaud, encre, un gris */
   --bg: #faf9f6;
-  --ink: #1a1a1a;
-  --ink-soft: #4a4a4a;
-  --muted: #9a9a9a;
-  --line: #e7e4dd;
-  --dot: #d6d3cc;
-  --dot-hover: #b1ada5;
+  --ink: #1a1a1a;      /* ~16:1 sur --bg (AAA) */
+  --ink-soft: #4a4a4a; /* ~7.9:1 sur --bg (AAA) */
+  --muted: #545454;    /* ~7.1:1 sur --bg (AAA texte) */
+  --line: #e7e4dd;     /* séparateur décoratif */
+  --dot: #808080;      /* ~3.7:1 — contraste composant (1.4.11) */
+  --dot-hover: #545454;
+  --focus: #1a1a1a;
 
   /* Typographie */
   --sans: 'Poppins', system-ui, -apple-system, 'Segoe UI', sans-serif;
@@ -84,6 +85,46 @@ button {
 ::selection {
   background: var(--ink);
   color: var(--bg);
+}
+
+/* Focus clavier visible (2.4.7) — anneau à fort contraste (1.4.11) */
+:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* Masqué visuellement mais lu par les lecteurs d'écran */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Lien d'évitement (2.4.1) — visible uniquement au focus clavier */
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -3rem;
+  z-index: 200;
+  padding: 0.6rem 1rem;
+  background: var(--ink);
+  color: var(--bg);
+  font-size: 0.9rem;
+  border-radius: 4px;
+  transition: top 0.2s ease;
+}
+.skip-link:focus {
+  top: 1rem;
 }
 
 /* Apparition douce */

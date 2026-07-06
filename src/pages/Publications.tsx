@@ -41,6 +41,7 @@ export default function Publications() {
                 href={p.href}
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label={`${L(ui.publications.action, lang)} — ${p.title}, ${L(p.issue, lang)} ${L(ui.a11y.newTab, lang)}`}
               >
                 {L(ui.publications.action, lang)} <span aria-hidden="true">→</span>
               </a>

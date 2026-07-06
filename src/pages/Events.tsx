@@ -28,6 +28,7 @@ export default function Events() {
                 href={e.href}
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label={`${L(ui.events.action, lang)} — ${e.name} ${L(ui.a11y.newTab, lang)}`}
               >
                 {L(ui.events.action, lang)} <span aria-hidden="true">→</span>
               </a>

@@ -19,6 +19,7 @@ export default function Footer() {
           rel="noopener noreferrer"
         >
           7 rue Jacob – 75006 Paris
+          <span className="visually-hidden"> {L(ui.a11y.newTab, lang)}</span>
         </a>
         {SEP}
         <span>CNE Expert</span>
@@ -36,6 +37,7 @@ export default function Footer() {
           rel="noopener noreferrer"
         >
           LinkedIn
+          <span className="visually-hidden"> {L(ui.a11y.newTab, lang)}</span>
         </a>
       </p>
     </footer>

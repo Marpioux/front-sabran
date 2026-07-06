@@ -89,7 +89,7 @@
   opacity: 1;
 }
 
-/* Flèches discrètes */
+/* Flèches — couleur à contraste suffisant (1.4.11), pas d'opacité faible */
 .arrow {
   position: absolute;
   top: 50%;
@@ -100,12 +100,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--ink);
-  opacity: 0.3;
-  transition: opacity 0.3s ease;
+  color: var(--muted);
+  transition: color 0.3s ease;
 }
 .arrow:hover {
-  opacity: 0.85;
+  color: var(--ink);
 }
 .arrowLeft { left: 0; }
 .arrowRight { right: 0; }
@@ -148,27 +147,57 @@
   margin-top: 0.15rem;
 }
 
+/* Rangée de contrôles : pause + pagination */
+.controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+}
+
+/* Bouton lecture/pause — cible ≥ 44px (2.5.5) */
+.playPause {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--muted);
+  transition: color 0.3s ease;
+}
+.playPause:hover {
+  color: var(--ink);
+}
+
 .dots {
   display: flex;
   align-items: center;
-  gap: 0.85rem;
-  margin-top: 1.75rem;
+}
+
+/* Zone de clic ≥ 44px autour d'un point visuel de 8px (2.5.5 / 2.5.8) */
+.dotHit {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
 }
 
 .dot {
-  width: 7px;
-  height: 7px;
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
   background: var(--dot);
-  padding: 0;
   transition: background-color 0.4s ease, transform 0.4s ease;
 }
-.dot:hover {
+.dotHit:hover .dot {
   background: var(--dot-hover);
 }
 .dotActive {
   background: var(--ink);
-  transform: scale(1.15);
+  transform: scale(1.35);
 }
 
 @keyframes fade {

@@ -43,7 +43,13 @@ export const ui = {
   a11y: {
     zoom: { fr: "Agrandir l'œuvre", en: 'Enlarge artwork' },
     close: { fr: 'Fermer', en: 'Close' },
-    prev: { fr: 'Précédent', en: 'Previous' },
-    next: { fr: 'Suivant', en: 'Next' },
+    prev: { fr: 'Œuvre précédente', en: 'Previous artwork' },
+    next: { fr: 'Œuvre suivante', en: 'Next artwork' },
+    pause: { fr: 'Mettre en pause le diaporama', en: 'Pause the slideshow' },
+    play: { fr: 'Lancer le diaporama', en: 'Play the slideshow' },
+    gallery: { fr: "Sélection d'œuvres", en: 'Selected artworks' },
+    newTab: { fr: '(nouvel onglet)', en: '(opens in a new tab)' },
+    goToArtwork: { fr: 'Aller à l’œuvre', en: 'Go to artwork' },
+    dialog: { fr: 'Œuvre en plein écran', en: 'Artwork, full screen' },
   },
 } as const
