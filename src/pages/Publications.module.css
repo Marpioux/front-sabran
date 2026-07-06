@@ -12,8 +12,9 @@
 }
 
 .title {
-  font-size: clamp(1.6rem, 3.2vw, 2.3rem);
-  font-weight: 400;
+  font-family: var(--serif);
+  font-size: clamp(2rem, 4vw, 2.9rem);
+  font-weight: 500;
   letter-spacing: 0.01em;
   margin-bottom: 0.75rem;
 }
@@ -77,9 +78,11 @@
 }
 
 .itemTitle {
-  font-size: 1.5rem;
-  font-weight: 400;
+  font-family: var(--serif);
+  font-size: 1.85rem;
+  font-weight: 500;
   letter-spacing: 0.01em;
+  color: var(--ink);
 }
 
 .excerpt {

@@ -1,8 +1,15 @@
+import { useSettings } from '../settings'
+import { L, ui } from '../i18n'
 import styles from './Footer.module.css'
 
-const SEP = <span className={styles.sep} aria-hidden="true">|</span>
-
 export default function Footer() {
+  const { lang } = useSettings()
+  const SEP = (
+    <span className={styles.sep} aria-hidden="true">
+      |
+    </span>
+  )
+
   return (
     <footer className={styles.footer}>
       <p className={styles.line}>
@@ -17,7 +24,7 @@ export default function Footer() {
         <span>CNE Expert</span>
         {SEP}
         <span>
-          By appointment:{' '}
+          {L(ui.footer.appointment, lang)}:{' '}
           <a href="mailto:contact@sabran.art">contact@sabran.art</a>
         </span>
         {SEP}

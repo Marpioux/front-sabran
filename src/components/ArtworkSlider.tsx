@@ -1,34 +1,30 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import type { Artwork } from '../data/artworks'
+import { useSettings } from '../settings'
+import { L, ui } from '../i18n'
+import Lightbox from './Lightbox'
 import styles from './ArtworkSlider.module.css'
 
 type Props = {
   artworks: Artwork[]
-  /** Défilement automatique (ms). 0 = désactivé. */
   autoplay?: number
 }
 
-/**
- * Carousel « peek » en boucle infinie : l'œuvre active au centre, les voisines
- * réduites et estompées en aperçu de part et d'autre — sans jamais de vide aux
- * extrémités. Réalisé par triplement de la liste + saut invisible en fin de
- * transition. Flèches, dots, clavier, autoplay en pause au survol.
- */
 export default function ArtworkSlider({ artworks, autoplay = 6000 }: Props) {
+  const { lang } = useSettings()
   const n = artworks.length
-  // Trois copies : la navigation vit dans la copie centrale [n .. 2n-1].
   const extended = [...artworks, ...artworks, ...artworks]
 
-  const [pos, setPos] = useState(n) // index dans `extended`
+  const [pos, setPos] = useState(n)
   const [animate, setAnimate] = useState(true)
   const [paused, setPaused] = useState(false)
+  const [zoom, setZoom] = useState<number | null>(null)
 
   const stageRef = useRef<HTMLDivElement>(null)
   const trackRef = useRef<HTMLDivElement>(null)
   const [cell, setCell] = useState(360)
   const [stageW, setStageW] = useState(0)
 
-  // Dimensionnement responsive des cellules
   useEffect(() => {
     const el = stageRef.current
     if (!el) return
@@ -52,24 +48,24 @@ export default function ArtworkSlider({ artworks, autoplay = 6000 }: Props) {
     [n],
   )
 
-  // Autoplay
+  // Autoplay (en pause si zoom ouvert)
   useEffect(() => {
-    if (!autoplay || paused) return
+    if (!autoplay || paused || zoom !== null) return
     const t = window.setTimeout(next, autoplay)
     return () => window.clearTimeout(t)
-  }, [autoplay, paused, next, pos])
+  }, [autoplay, paused, next, pos, zoom])
 
-  // Clavier
+  // Clavier (désactivé quand la lightbox gère elle-même les touches)
   useEffect(() => {
+    if (zoom !== null) return
     const onKey = (e: KeyboardEvent) => {
       if (e.key === 'ArrowRight') next()
       if (e.key === 'ArrowLeft') prev()
     }
     window.addEventListener('keydown', onKey)
     return () => window.removeEventListener('keydown', onKey)
-  }, [next, prev])
+  }, [next, prev, zoom])
 
-  // Saut invisible pour rester dans la copie centrale
   const handleTransitionEnd = (e: React.TransitionEvent) => {
     if (e.target !== trackRef.current || e.propertyName !== 'transform') return
     if (pos >= 2 * n) {
@@ -81,7 +77,6 @@ export default function ArtworkSlider({ artworks, autoplay = 6000 }: Props) {
     }
   }
 
-  // Réactive la transition après un saut (au frame suivant)
   useEffect(() => {
     if (animate) return
     const raf = requestAnimationFrame(() => setAnimate(true))
@@ -104,7 +99,7 @@ export default function ArtworkSlider({ artworks, autoplay = 6000 }: Props) {
           type="button"
           className={`${styles.arrow} ${styles.arrowLeft}`}
           onClick={prev}
-          aria-label="Œuvre précédente"
+          aria-label={L(ui.a11y.prev, lang)}
         >
           <Chevron dir="left" />
         </button>
@@ -121,6 +116,7 @@ export default function ArtworkSlider({ artworks, autoplay = 6000 }: Props) {
         >
           {extended.map((art, j) => {
             const active = j === pos
+            const name = L(art.name, lang)
             return (
               <div
                 key={j}
@@ -131,9 +127,14 @@ export default function ArtworkSlider({ artworks, autoplay = 6000 }: Props) {
                 <button
                   type="button"
                   className={styles.cellBtn}
-                  onClick={() => setPos(j)}
-                  tabIndex={active ? -1 : 0}
-                  aria-label={art.name ? `Voir ${art.name}` : 'Voir l’œuvre'}
+                  onClick={() =>
+                    active ? setZoom(realIndex) : setPos(j)
+                  }
+                  aria-label={
+                    active
+                      ? L(ui.a11y.zoom, lang)
+                      : name || 'Œuvre'
+                  }
                 >
                   <img
                     src={art.image}
@@ -142,6 +143,9 @@ export default function ArtworkSlider({ artworks, autoplay = 6000 }: Props) {
                     draggable={false}
                     decoding="async"
                   />
+                  {!active && name && (
+                    <span className={styles.peekName}>{name}</span>
+                  )}
                 </button>
               </div>
             )
@@ -152,23 +156,24 @@ export default function ArtworkSlider({ artworks, autoplay = 6000 }: Props) {
           type="button"
           className={`${styles.arrow} ${styles.arrowRight}`}
           onClick={next}
-          aria-label="Œuvre suivante"
+          aria-label={L(ui.a11y.next, lang)}
         >
           <Chevron dir="right" />
         </button>
       </div>
 
-      {/* Légende de l'œuvre active */}
       <figcaption
-        className={`${styles.caption} ${current.name ? '' : styles.captionEmpty}`}
-        key={current.id}
+        className={`${styles.caption} ${current.name.fr || current.name.en ? '' : styles.captionEmpty}`}
+        key={current.id + lang}
       >
-        {current.name && <span className={styles.name}>{current.name}</span>}
-        {current.origin && <span className={styles.meta}>{current.origin}</span>}
-        {current.dimension && (
-          <span className={styles.meta}>{current.dimension}</span>
+        {L(current.name, lang) && (
+          <span className={styles.name}>{L(current.name, lang)}</span>
         )}
-        {current.note && <span className={styles.note}>{current.note}</span>}
+        {current.origin && <span className={styles.meta}>{L(current.origin, lang)}</span>}
+        {current.dimension && (
+          <span className={styles.meta}>{L(current.dimension, lang)}</span>
+        )}
+        {current.note && <span className={styles.note}>{L(current.note, lang)}</span>}
       </figcaption>
 
       <div className={styles.dots} role="tablist" aria-label="Sélection d'œuvres">
@@ -178,12 +183,25 @@ export default function ArtworkSlider({ artworks, autoplay = 6000 }: Props) {
             type="button"
             role="tab"
             aria-selected={i === realIndex}
-            aria-label={`Œuvre ${i + 1}${art.name ? ` — ${art.name}` : ''}`}
+            aria-label={`Œuvre ${i + 1}`}
             className={`${styles.dot} ${i === realIndex ? styles.dotActive : ''}`}
             onClick={() => goToReal(i)}
           />
         ))}
       </div>
+
+      {zoom !== null && (
+        <Lightbox
+          artworks={artworks}
+          index={zoom}
+          lang={lang}
+          onClose={() => setZoom(null)}
+          onNav={(i) => {
+            setZoom(i)
+            goToReal(i)
+          }}
+        />
+      )}
     </section>
   )
 }

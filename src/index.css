@@ -1,18 +1,20 @@
 :root {
-  /* Palette — sobre, galerie : blanc, encre, un gris */
-  --bg: #ffffff;
+  /* Palette claire — blanc cassé chaud, encre, un gris */
+  --bg: #faf9f6;
   --ink: #1a1a1a;
   --ink-soft: #4a4a4a;
   --muted: #9a9a9a;
-  --line: #ececec;
+  --line: #e7e4dd;
+  --dot: #d6d3cc;
+  --dot-hover: #b1ada5;
 
   /* Typographie */
   --sans: 'Poppins', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --serif: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
 
   /* Rythme / mise en page */
   --page-max: 1240px;
   --gutter: clamp(1.25rem, 4vw, 3.5rem);
-  --header-h: 168px;
 
   color-scheme: light;
   font-family: var(--sans);
@@ -84,20 +86,22 @@ button {
   color: var(--bg);
 }
 
-/* Apparition douce au chargement — modernité discrète */
+/* Apparition douce */
 @keyframes reveal-up {
-  from {
-    opacity: 0;
-    transform: translateY(14px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
 }
-
 .reveal {
   animation: reveal-up 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* Transitions de page (View Transitions API) — fondu feutré */
+@media (prefers-reduced-motion: no-preference) {
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation-duration: 0.45s;
+    animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

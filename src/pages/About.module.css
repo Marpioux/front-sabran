@@ -1,6 +1,6 @@
 .about {
   flex: 1 0 auto;
-  max-width: 720px;
+  max-width: 680px;
   margin: 0 auto;
   padding: clamp(1rem, 4vh, 3rem) 0;
   display: flex;
@@ -9,24 +9,10 @@
 }
 
 .text {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-}
-
-.fr {
-  font-size: 1.05rem;
-  font-weight: 400;
-  line-height: 1.7;
-  color: var(--ink);
-}
-
-.en {
-  font-size: 1.05rem;
+  font-size: 1.1rem;
   font-weight: 300;
-  font-style: italic;
-  line-height: 1.7;
-  color: var(--ink-soft);
+  line-height: 1.8;
+  color: var(--ink);
 }
 
 .figure {
@@ -42,8 +28,8 @@
 }
 
 @media (max-width: 640px) {
-  .fr,
-  .en {
-    font-size: 0.98rem;
+  .text {
+    font-size: 1rem;
+    line-height: 1.75;
   }
 }

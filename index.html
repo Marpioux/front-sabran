@@ -4,17 +4,43 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>SABRAN — Arts d'Afrique et d'Océanie</title>
     <meta
       name="description"
-      content="SABRAN — Arts d'Afrique et d'Océanie. Cabinet de conseil et d'expertise, Paris."
+      content="SABRAN — Marguerite de Sabran. Conseil et expertise en arts classiques d'Afrique et d'Océanie. 7 rue Jacob, Paris."
     />
+
+    <!-- Open Graph / réseaux sociaux -->
+    <!-- NB : remplacer les URL relatives par l'URL de production absolue une fois le domaine défini -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="SABRAN — Arts d'Afrique et d'Océanie" />
+    <meta
+      property="og:description"
+      content="Conseil et expertise en arts classiques d'Afrique et d'Océanie. Paris."
+    />
+    <meta property="og:image" content="/og-image.jpg" />
+    <meta property="og:locale" content="fr_FR" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="SABRAN — Arts d'Afrique et d'Océanie" />
+    <meta name="twitter:image" content="/og-image.jpg" />
+
+    <!-- Langue mémorisée appliquée avant le rendu -->
+    <script>
+      (function () {
+        try {
+          var l = localStorage.getItem('lang')
+          if (l === 'fr' || l === 'en') document.documentElement.lang = l
+        } catch (e) {}
+      })()
+    </script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;1,300&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Poppins:ital,wght@0,300;0,400;0,500;1,300&display=swap"
       rel="stylesheet"
     />
-    <title>SABRAN — Arts d'Afrique et d'Océanie</title>
   </head>
   <body>
     <div id="root"></div>

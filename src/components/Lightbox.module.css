@@ -1,0 +1,113 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(1.5rem, 5vw, 5rem);
+  background: rgba(12, 12, 12, 0.95);
+  backdrop-filter: blur(2px);
+  animation: fadein 0.35s ease;
+}
+
+@keyframes fadein {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.figure {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.75rem;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.img {
+  max-height: 74vh;
+  max-width: min(80vw, 700px);
+  width: auto;
+  object-fit: contain;
+  animation: zoomin 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes zoomin {
+  from { opacity: 0; transform: scale(0.97); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.cap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.2rem;
+  text-align: center;
+  color: #f2f0ec;
+}
+
+.name {
+  font-family: var(--serif);
+  font-size: 1.7rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+
+.meta {
+  font-size: 0.95rem;
+  font-weight: 300;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #c9c6bf;
+}
+
+.note {
+  font-size: 0.9rem;
+  font-weight: 300;
+  color: #8f8b83;
+  margin-top: 0.1rem;
+}
+
+.close {
+  position: absolute;
+  top: clamp(1rem, 3vw, 2rem);
+  right: clamp(1rem, 3vw, 2rem);
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #e8e6e0;
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+}
+.close:hover {
+  opacity: 1;
+}
+
+.nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #e8e6e0;
+  opacity: 0.55;
+  transition: opacity 0.3s ease;
+}
+.nav:hover {
+  opacity: 1;
+}
+.prev { left: clamp(0.5rem, 2vw, 2rem); }
+.next { right: clamp(0.5rem, 2vw, 2rem); }
+
+@media (max-width: 640px) {
+  .name { font-size: 1.4rem; }
+  .img { max-height: 66vh; }
+  .nav { width: 44px; height: 44px; }
+}
