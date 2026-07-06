@@ -12,7 +12,7 @@ export default function Header() {
   return (
     <header className={styles.header}>
       <Link to="/" className={styles.brand} aria-label="Accueil — SABRAN">
-        <Logo />
+        <Logo width={132} />
       </Link>
 
       <nav className={styles.nav}>

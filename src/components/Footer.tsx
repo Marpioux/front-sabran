@@ -6,7 +6,13 @@ export default function Footer() {
   return (
     <footer className={styles.footer}>
       <p className={styles.line}>
-        <span>7 rue Jacob – 75006 Paris</span>
+        <a
+          href="https://www.google.com/maps/search/?api=1&query=7+rue+Jacob+75006+Paris"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          7 rue Jacob – 75006 Paris
+        </a>
         {SEP}
         <span>CNE Expert</span>
         {SEP}
