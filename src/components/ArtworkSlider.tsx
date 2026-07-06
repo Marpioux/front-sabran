@@ -17,7 +17,7 @@ function prefersReducedMotion() {
   )
 }
 
-export default function ArtworkSlider({ artworks, autoplay = 6000 }: Props) {
+export default function ArtworkSlider({ artworks, autoplay = 5000 }: Props) {
   const { lang } = useSettings()
   const n = artworks.length
   const extended = [...artworks, ...artworks, ...artworks]
