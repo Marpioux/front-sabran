@@ -1,10 +1,12 @@
 import { publications } from '../data/publications'
 import { useSettings } from '../settings'
+import { usePageMeta } from '../seo'
 import { L, ui } from '../i18n'
 import styles from './Publications.module.css'
 
 export default function Publications() {
   const { lang } = useSettings()
+  usePageMeta(`${L(ui.publications.title, lang)} — SABRAN`, L(ui.publications.lead, lang))
   return (
     <div className={`${styles.page} reveal`}>
       <header className={styles.head}>

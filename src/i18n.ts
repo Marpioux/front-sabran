@@ -40,6 +40,12 @@ export const ui = {
   footer: {
     appointment: { fr: 'Sur rendez-vous', en: 'By appointment' },
   },
+  seo: {
+    tagline: {
+      fr: "Conseil et expertise en arts classiques d'Afrique et d'Océanie. Marguerite de Sabran, 7 rue Jacob, Paris.",
+      en: 'Advisory and expertise in the classical arts of Africa and Oceania. Marguerite de Sabran, 7 rue Jacob, Paris.',
+    },
+  },
   a11y: {
     zoom: { fr: "Agrandir l'œuvre", en: 'Enlarge artwork' },
     close: { fr: 'Fermer', en: 'Close' },

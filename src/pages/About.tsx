@@ -1,5 +1,7 @@
 import portrait from '../assets/artworks/portrait.webp'
 import { useSettings } from '../settings'
+import { usePageMeta } from '../seo'
+import { L, ui } from '../i18n'
 import styles from './About.module.css'
 
 const bio = {
@@ -9,6 +11,7 @@ const bio = {
 
 export default function About() {
   const { lang } = useSettings()
+  usePageMeta(`${L(ui.nav.about, lang)} — SABRAN`, L(ui.seo.tagline, lang))
   return (
     <article className={`${styles.about} reveal`}>
       <p className={styles.text}>{bio[lang]}</p>

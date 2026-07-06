@@ -1,10 +1,12 @@
 import { events } from '../data/events'
 import { useSettings } from '../settings'
+import { usePageMeta } from '../seo'
 import { L, ui } from '../i18n'
 import styles from './Events.module.css'
 
 export default function Events() {
   const { lang } = useSettings()
+  usePageMeta(`${L(ui.events.title, lang)} — SABRAN`, L(ui.events.lead, lang))
   return (
     <div className={`${styles.page} reveal`}>
       <header className={styles.head}>
