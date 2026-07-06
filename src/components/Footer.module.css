@@ -1,0 +1,35 @@
+.footer {
+  flex-shrink: 0;
+  padding: 2.5rem 0 2.75rem;
+  text-align: center;
+}
+
+.line {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem 0.75rem;
+  font-size: 1.0rem;
+  color: var(--ink);
+}
+
+.line a {
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.3s ease;
+}
+
+.line a:hover {
+  border-bottom-color: var(--ink);
+}
+
+.sep {
+  color: var(--muted);
+}
+
+@media (max-width: 640px) {
+  .line {
+    font-size: 0.85rem;
+    gap: 0.4rem 0.5rem;
+  }
+}
