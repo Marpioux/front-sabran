@@ -27,6 +27,22 @@
   margin: 0 auto;
 }
 
+/* Sections de la page (Parutions, Vidéos) */
+.section + .section {
+  margin-top: clamp(3rem, 8vh, 5.5rem);
+}
+
+.sectionTitle {
+  font-size: 0.82rem;
+  font-weight: 400;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding-bottom: 0.9rem;
+  margin-bottom: clamp(2rem, 4vh, 3rem);
+  border-bottom: 1px solid var(--line);
+}
+
 .list {
   list-style: none;
   margin: 0;
@@ -108,6 +124,29 @@
   transform: translateX(4px);
 }
 
+/* Vidéos — lecteur pleine largeur, texte sous le lecteur */
+.videoList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(2.5rem, 5vh, 4rem);
+}
+
+.videoItem {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1.25rem, 3vh, 1.75rem);
+}
+
+.notice {
+  margin-top: 0.35rem;
+  font-size: 0.82rem;
+  font-weight: 300;
+  color: var(--muted);
+}
+
 @media (max-width: 640px) {
   .item {
     grid-template-columns: 1fr;
@@ -118,7 +157,7 @@
   .cover {
     max-width: 190px;
   }
-  .body {
+  .item .body {
     align-items: center;
   }
 }

@@ -28,6 +28,13 @@ export const ui = {
       en: 'Publications, catalogues and references on the classical arts of Africa and Oceania.',
     },
     action: { fr: 'Consulter', en: 'View' },
+    sectionPrint: { fr: 'Parutions', en: 'In print' },
+    sectionVideo: { fr: 'Vidéos', en: 'Videos' },
+    watch: { fr: 'Voir sur YouTube', en: 'Watch on YouTube' },
+    videoNotice: {
+      fr: 'La lecture charge un contenu hébergé par YouTube.',
+      en: 'Playback loads content hosted by YouTube.',
+    },
   },
   events: {
     title: { fr: 'Événements', en: 'Events' },
@@ -57,5 +64,6 @@ export const ui = {
     newTab: { fr: '(nouvel onglet)', en: '(opens in a new tab)' },
     goToArtwork: { fr: 'Aller à l’œuvre', en: 'Go to artwork' },
     dialog: { fr: 'Œuvre en plein écran', en: 'Artwork, full screen' },
+    playVideo: { fr: 'Lire la vidéo', en: 'Play video' },
   },
 } as const

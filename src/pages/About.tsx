@@ -9,6 +9,11 @@ const bio = {
   en: `Marguerite de Sabran launched her own consulting firm, SABRAN, in 2018, after 15 years at Sotheby's — 11 as Director of the African and Oceania Arts Department. She works with institutions, French and international, advises private collectors, and manages major private art sales. At the same time, Marguerite de Sabran is involved in research networks and undertakes numerous actions to develop knowledge of African classical arts: teaching in university, dedicated interventions and publications, academic and scientific collaborations.`,
 }
 
+const portraitAlt = {
+  fr: "Portrait en noir et blanc de l'équipe SABRAN",
+  en: 'Black and white portrait of the SABRAN team',
+}
+
 export default function About() {
   const { lang } = useSettings()
   usePageMeta(`${L(ui.nav.about, lang)} — SABRAN`, L(ui.seo.tagline, lang))
@@ -19,10 +24,10 @@ export default function About() {
       <figure className={styles.figure}>
         <img
           src={portrait}
-          alt="Marguerite de Sabran"
+          alt={L(portraitAlt, lang)}
           className={styles.portrait}
-          width={452}
-          height={306}
+          width={920}
+          height={614}
           loading="lazy"
           decoding="async"
         />

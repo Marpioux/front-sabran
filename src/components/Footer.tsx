@@ -32,11 +32,11 @@ export default function Footer() {
         <a href="tel:+33142022372">+ 33 1 42 02 23 72</a>
         {SEP}
         <a
-          href="https://www.linkedin.com/"
+          href="https://www.instagram.com/sabran_art/"
           target="_blank"
           rel="noopener noreferrer"
         >
-          LinkedIn
+          Instagram
           <span className="visually-hidden"> {L(ui.a11y.newTab, lang)}</span>
         </a>
       </p>
