@@ -8,7 +8,7 @@ import styles from './Publications.module.css'
 
 export default function Publications() {
   const { lang } = useSettings()
-  usePageMeta(`${L(ui.publications.title, lang)} — SABRAN`, L(ui.publications.lead, lang))
+  usePageMeta(`${L(ui.publications.title, lang)}, SABRAN`, L(ui.publications.lead, lang))
   return (
     <div className={`${styles.page} reveal`}>
       <header className={styles.head}>
@@ -32,7 +32,7 @@ export default function Publications() {
               >
                 <img
                   src={p.cover}
-                  alt={`${p.title} — ${L(p.issue, lang)}`}
+                  alt={`${p.title}, ${L(p.issue, lang)}`}
                   width={403}
                   height={520}
                   loading="lazy"
@@ -50,7 +50,7 @@ export default function Publications() {
                   href={p.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  aria-label={`${L(ui.publications.action, lang)} — ${p.title}, ${L(p.issue, lang)} ${L(ui.a11y.newTab, lang)}`}
+                  aria-label={`${L(ui.publications.action, lang)}, ${p.title}, ${L(p.issue, lang)} ${L(ui.a11y.newTab, lang)}`}
                 >
                   {L(ui.publications.action, lang)} <span aria-hidden="true">→</span>
                 </a>
@@ -80,7 +80,7 @@ export default function Publications() {
                   href={`https://www.youtube.com/watch?v=${v.youtubeId}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  aria-label={`${L(ui.publications.watch, lang)} — ${L(v.title, lang)} ${L(ui.a11y.newTab, lang)}`}
+                  aria-label={`${L(ui.publications.watch, lang)}, ${L(v.title, lang)} ${L(ui.a11y.newTab, lang)}`}
                 >
                   {L(ui.publications.watch, lang)} <span aria-hidden="true">→</span>
                 </a>

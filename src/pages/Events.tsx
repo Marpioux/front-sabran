@@ -6,7 +6,7 @@ import styles from './Events.module.css'
 
 export default function Events() {
   const { lang } = useSettings()
-  usePageMeta(`${L(ui.events.title, lang)} — SABRAN`, L(ui.events.lead, lang))
+  usePageMeta(`${L(ui.events.title, lang)}, SABRAN`, L(ui.events.lead, lang))
   return (
     <div className={`${styles.page} reveal`}>
       <header className={styles.head}>
@@ -30,7 +30,7 @@ export default function Events() {
                 href={e.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label={`${L(ui.events.action, lang)} — ${e.name} ${L(ui.a11y.newTab, lang)}`}
+                aria-label={`${L(ui.events.action, lang)}, ${e.name} ${L(ui.a11y.newTab, lang)}`}
               >
                 {L(ui.events.action, lang)} <span aria-hidden="true">→</span>
               </a>

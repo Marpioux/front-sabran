@@ -32,7 +32,7 @@ export default function VideoEmbed({ video, lang }: Props) {
           type="button"
           className={styles.facade}
           onClick={() => setPlaying(true)}
-          aria-label={`${L(ui.a11y.playVideo, lang)} — ${title}`}
+          aria-label={`${L(ui.a11y.playVideo, lang)}, ${title}`}
         >
           <img
             src={video.thumb}
